@@ -1,33 +1,31 @@
 import '../../styles/globals.css';
 import { AppProps, AppContext } from 'next/app';
 import React from 'react';
-import Layout from './../components/layout';
+import Layout from '../components/layout';
 
-const App = ({Component, pageProps}: AppProps): JSX.Element => {
+const App = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
-    const jss = document.querySelector('#jss-server-side')
+    const jss = document.querySelector('#jss-server-side');
     if (jss && jss.parentNode) {
-      jss.parentNode.removeChild(jss)
+      jss.parentNode.removeChild(jss);
     }
-  }, [])
+  }, []);
 
   return (
     <Layout>
-      <Component {...pageProps}/>
+      <Component {...pageProps} />
     </Layout>
-  )
-}
+  );
+};
 
-App.getInitialProps = async ({Component, ctx}: AppContext) => {
-  const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve())
+App.getInitialProps = async ({ Component, ctx }: AppContext) => {
+  const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve());
 
-  const [pageProps] = await Promise.all([
-    componentGetInitialProps(ctx)
-  ])
+  const [pageProps] = await Promise.all([componentGetInitialProps(ctx)]);
 
   return {
-    pageProps
-  }
-}
+    pageProps,
+  };
+};
 
-export default App
+export default App;

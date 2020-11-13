@@ -1,13 +1,17 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 
-const Layout: React.FC = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
 
+const Layout: React.FC<Props> = ({ children }) => (
   // Please implements global layouts
-  return (
-    <>
-      {children}
-    </>
-  )
-}
+  <>{children}</>
+);
 
-export default Layout
+Layout.propTypes = {
+  children: PropTypes.instanceOf(Element).isRequired,
+};
+
+export default Layout;
