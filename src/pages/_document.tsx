@@ -6,6 +6,7 @@ type Props = {};
 
 class Document extends NextDocument<Props> {
   static async getInitialProps(ctx) {
+    const initialProps = await NextDocument.getInitialProps(ctx);
     const sheets = new ServerStyleSheets();
     const origRenderPage = ctx.renderPage;
 
@@ -14,8 +15,6 @@ class Document extends NextDocument<Props> {
         enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
       });
     };
-
-    const initialProps = await NextDocument.getInitialProps(ctx);
 
     return {
       ...initialProps,

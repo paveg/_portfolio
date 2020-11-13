@@ -1,7 +1,7 @@
 import '../../styles/globals.css';
 import { AppProps, AppContext } from 'next/app';
 import React from 'react';
-import Layout from '../components/layout';
+import Head from 'next/head';
 
 const App = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
@@ -12,9 +12,18 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <Layout>
+    <>
+      <Head>
+        <meta
+          key="viewport"
+          name="viewport"
+          content="width=device-width,initial-scale=1.0,viewport-fit=cover"
+        />
+        <title key="title">portfolio</title>
+      </Head>
+
       <Component {...pageProps} />
-    </Layout>
+    </>
   );
 };
 
