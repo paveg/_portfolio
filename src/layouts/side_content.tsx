@@ -39,16 +39,16 @@ const SideContent: React.FC = () => {
         <p>Web Developer at freee K.K.</p>
       </Container>
       <Wrapper>
-        <IconButton onClick={openExternal(ExternalLinks.twitter)}>
+        <IconButton aria-label="twitter.com" onClick={openExternal(ExternalLinks.twitter)}>
           <TwitterIcon />
         </IconButton>
-        <IconButton onClick={openExternal(ExternalLinks.github)}>
+        <IconButton aria-label="github.com" onClick={openExternal(ExternalLinks.github)}>
           <GitHubIcon />
         </IconButton>
-        <IconButton onClick={openExternal(ExternalLinks.facebook)}>
+        <IconButton aria-label="facebook.com" onClick={openExternal(ExternalLinks.facebook)}>
           <FacebookIcon />
         </IconButton>
-        <IconButton aria-label="Linkedin.com" onClick={openExternal(ExternalLinks.linkedin)}>
+        <IconButton aria-label="linkedin.com" onClick={openExternal(ExternalLinks.linkedin)}>
           <LinkedInIcon />
         </IconButton>
       </Wrapper>
