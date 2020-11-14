@@ -5,8 +5,6 @@ const ExternalLinks = {
   github: 'https://github.com/paveg',
 };
 
-export const openExternal = (url) => {
-  return () => window.open(url);
-};
+export const openExternal = (url) => () => window.open(url);
 
 export default ExternalLinks;
