@@ -1,7 +1,22 @@
-import '../../styles/globals.css';
 import { AppProps, AppContext } from 'next/app';
+import reset from 'styled-reset';
 import React from 'react';
 import Head from 'next/head';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+type GlobalStyleProps = {
+  theme: {
+    backgroundColor: string;
+  };
+};
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
+  ${reset}
+  // Write your global styles.
+  body {
+    background: ${(props) => props.theme.backgroundColor};
+  }
+`;
 
 const App = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
@@ -22,7 +37,10 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title key="title">portfolio</title>
       </Head>
 
-      <Component {...pageProps} />
+      <ThemeProvider theme={{ backgroundColor: 'white' }}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 };
