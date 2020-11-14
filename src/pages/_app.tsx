@@ -34,6 +34,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="width=device-width,initial-scale=1.0,viewport-fit=cover"
         />
+        <meta name="Description" content="Ryota Ikezawa's portfolio" />
         <title key="title">portfolio</title>
       </Head>
 
