@@ -113,3 +113,6 @@ dist
 .vercel
 
 .node-version
+
+# export directory
+out/
