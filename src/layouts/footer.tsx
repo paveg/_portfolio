@@ -12,12 +12,10 @@ const CopyRight = styled.div`
   text-align: left;
 `;
 
-const Footer: React.FC = () => {
-  return (
-    <Wrapper>
-      <CopyRight>© 2020 Ryota Ikezawa</CopyRight>
-    </Wrapper>
-  );
-};
+const Footer: React.FC = () => (
+  <Wrapper>
+    <CopyRight>© 2020 Ryota Ikezawa</CopyRight>
+  </Wrapper>
+);
 
 export default Footer;
