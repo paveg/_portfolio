@@ -11,9 +11,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: npm ci
-      - run: npm run export
-      - uses: treosh/lighthouse-ci-actions@v2
-        with:
-          configPath: './lighthouse.json'
-          uploadArtifacts: true
+      - name: npm clean install, export
+        run: |
+          npm ci
+          npm run export
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.4.x
+          lhci autorun
