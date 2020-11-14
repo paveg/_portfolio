@@ -1,4 +1,4 @@
-import { AppProps, AppContext } from 'next/app';
+import { AppProps } from 'next/app';
 import reset from 'styled-reset';
 import React from 'react';
 import Head from 'next/head';
@@ -34,6 +34,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="width=device-width,initial-scale=1.0,viewport-fit=cover"
         />
+        <meta name="Description" content="Ryota Ikezawa's portfolio" />
         <title key="title">portfolio</title>
       </Head>
 
@@ -43,16 +44,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       </ThemeProvider>
     </>
   );
-};
-
-App.getInitialProps = async ({ Component, ctx }: AppContext) => {
-  const componentGetInitialProps = Component.getInitialProps || (() => Promise.resolve());
-
-  const [pageProps] = await Promise.all([componentGetInitialProps(ctx)]);
-
-  return {
-    pageProps,
-  };
 };
 
 export default App;

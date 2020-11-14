@@ -1,0 +1,21 @@
+name: Lighthouse CI
+
+on: [push]
+
+jobs:
+  lighthouse-test:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm clean install, export
+        run: |
+          npm ci
+          npm run export
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.4.x
+          lhci autorun
