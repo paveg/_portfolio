@@ -1,11 +1,11 @@
 import * as React from 'react';
 import MainContainer from '../layouts/main_container';
 import Footer from '../layouts/footer';
-import OtherComponent from '../components/other_component';
+import SideContent from '../layouts/side_content';
 
 const Home: React.FC = () => (
   <>
-    <MainContainer side={<OtherComponent />} main={<>writing</>} />
+    <MainContainer side={<SideContent />} main={<>writing</>} />
     <Footer />
   </>
 );

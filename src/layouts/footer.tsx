@@ -1,11 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Color from '../lib/color';
 
 const Wrapper = styled.div`
   padding: 20px;
   text-align: center;
-  background-color: #222;
-  color: #fff;
+  height: 5vh;
+  background-color: ${Color.gray};
+  color: ${Color.black};
 `;
 
 const CopyRight = styled.div`
