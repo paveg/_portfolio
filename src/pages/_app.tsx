@@ -57,7 +57,8 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          as="style"
         />
         <title key="title">portfolio</title>
       </Head>
