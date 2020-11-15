@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PaddingWrapper = styled.div`
-  padding: 4em 4em 3em;
+  padding: 3em 2em 0em 2em;
 `;
 
 const PaddingContainer = styled(Container)`

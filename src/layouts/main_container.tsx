@@ -13,7 +13,7 @@ const FlexContainer = styled.div`
 
 const SideContent = styled(Wrapper)`
   @media screen and (min-width: 768px) {
-    height: 90%;
+    height: 100%;
     width: 35vw;
     border-bottom: 1px solid;
     border-bottom-color: ${Color.white};
