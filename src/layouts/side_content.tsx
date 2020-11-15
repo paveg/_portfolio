@@ -9,6 +9,8 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ExternalLinks, { openExternal } from '../lib/external_links';
+import Footer from './footer';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   large: {
@@ -17,8 +19,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Wrapper = styled.div`
-  padding: 4em 4em 6em;
+const PaddingWrapper = styled.div`
+  padding: 4em 4em 3em;
+`;
+
+const PaddingContainer = styled(Container)`
+  padding-top: 2em;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  margin: auto;
 `;
 
 const SideContent: React.FC = () => {
@@ -26,32 +36,28 @@ const SideContent: React.FC = () => {
 
   return (
     <>
-      <Container>
-        <Avatar
-          className={classes.large}
-          alt="profile"
-          src="./profile.jpeg"
-          style={{
-            margin: 'auto',
-          }}
-        />
-        <h2>Ryota Ikezawa</h2>
+      <PaddingContainer>
+        <StyledAvatar className={classes.large} alt="profile" src="profile.jpeg" />
+        <br />
+        <h2 style={{ fontWeight: 'bold' }}>Ryota Ikezawa</h2>
         <p>Web Developer at freee K.K.</p>
-      </Container>
-      <Wrapper>
-        <IconButton aria-label="twitter.com" onClick={openExternal(ExternalLinks.twitter)}>
-          <TwitterIcon />
-        </IconButton>
-        <IconButton aria-label="github.com" onClick={openExternal(ExternalLinks.github)}>
-          <GitHubIcon />
-        </IconButton>
-        <IconButton aria-label="facebook.com" onClick={openExternal(ExternalLinks.facebook)}>
-          <FacebookIcon />
-        </IconButton>
-        <IconButton aria-label="linkedin.com" onClick={openExternal(ExternalLinks.linkedin)}>
-          <LinkedInIcon />
-        </IconButton>
-      </Wrapper>
+        <PaddingWrapper>
+          <IconButton aria-label="twitter.com" onClick={openExternal(ExternalLinks.twitter)}>
+            <TwitterIcon />
+          </IconButton>
+          <IconButton aria-label="github.com" onClick={openExternal(ExternalLinks.github)}>
+            <GitHubIcon />
+          </IconButton>
+          <IconButton aria-label="facebook.com" onClick={openExternal(ExternalLinks.facebook)}>
+            <FacebookIcon />
+          </IconButton>
+          <IconButton aria-label="linkedin.com" onClick={openExternal(ExternalLinks.linkedin)}>
+            <LinkedInIcon />
+          </IconButton>
+        </PaddingWrapper>
+        <Divider />
+        <Footer />
+      </PaddingContainer>
     </>
   );
 };

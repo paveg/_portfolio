@@ -2,20 +2,18 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Color from '../lib/color';
+import Wrapper from '../components/wrapper';
 
 const FlexContainer = styled.div`
   @media screen and (min-width: 768px) {
+    height: 100%;
     display: flex;
   }
 `;
 
-const SideContent = styled.div`
-  padding: 20px;
-  text-align: center;
-  color: ${Color.black};
-  background-color: ${Color.gray};
+const SideContent = styled(Wrapper)`
   @media screen and (min-width: 768px) {
-    height: 87vh;
+    height: 90%;
     width: 35vw;
     border-bottom: 1px solid;
     border-bottom-color: ${Color.white};

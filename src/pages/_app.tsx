@@ -18,10 +18,22 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     height: 100%;
   }
   body {
+    margin: 0;
+    height: 100%;
     font-size: 1rem;
     font-family: 'Noto Sans JP', sans-serif;
     line-height: 1.5;
     background: ${(props) => props.theme.backgroundColor};
+  }
+  #next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  #__next {
+    height: 100%;
   }
   h1 {
     font-size: 2rem;
