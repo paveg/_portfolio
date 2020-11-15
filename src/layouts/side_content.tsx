@@ -40,7 +40,7 @@ const SideContent: React.FC = () => {
   return (
     <>
       <PaddingContainer>
-        <StyledAvatar className={classes.large} alt="profile" src="profile.jpeg" />
+        <StyledAvatar className={classes.large} alt="profile" src="profile.jpg" />
         <br />
         <h2 style={{ fontWeight: 'bold' }}>Ryota Ikezawa</h2>
         <p>Web Developer at freee K.K.</p>
