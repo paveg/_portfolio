@@ -1,5 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/styles';
+import { ServerStyleSheet } from 'styled-components';
 import * as React from 'react';
 
 type Props = {};
@@ -7,18 +7,18 @@ type Props = {};
 class Document extends NextDocument<Props> {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx);
-    const sheets = new ServerStyleSheets();
+    const sheet = new ServerStyleSheet();
     const origRenderPage = ctx.renderPage;
 
     ctx.renderPage = () => {
       origRenderPage({
-        enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
       });
     };
 
     return {
       ...initialProps,
-      styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+      styles: [...React.Children.toArray(initialProps.styles), sheet.getStyleElement()],
     };
   }
 
