@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Color from '../lib/color';
 
 type Props = {
-  children: JSX.Element;
+  children: React.ReactNode;
 };
 
 const WrapperDiv = styled.div`
@@ -13,8 +13,6 @@ const WrapperDiv = styled.div`
   background-color: ${Color.gray};
 `;
 
-const Wrapper: React.FC = ({ children }: Props) => {
-  return <WrapperDiv>{children}</WrapperDiv>;
-};
+const Wrapper: React.FC = ({ children }: Props) => <WrapperDiv>{children}</WrapperDiv>;
 
 export default Wrapper;

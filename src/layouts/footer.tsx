@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Wrapper from '../components/wrapper';
 import styled from 'styled-components';
+import Wrapper from '../components/wrapper';
 
 const CopyRight = styled.span`
   font-size: 0.8rem;

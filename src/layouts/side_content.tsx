@@ -1,16 +1,19 @@
 import * as React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import loadable from '@loadable/component';
+import styled from 'styled-components';
+// material-ui
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import styled from 'styled-components';
+import Avatar from '@material-ui/core/Avatar';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import IconButton from '@material-ui/core/IconButton';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import ExternalLinks, { openExternal } from '../lib/external_links';
-import Footer from './footer';
 import Divider from '@material-ui/core/Divider';
+import ExternalLinks, { openExternal } from '../lib/external_links';
+
+const Footer = loadable(() => import('./footer'));
 
 const useStyles = makeStyles((theme) => ({
   large: {
