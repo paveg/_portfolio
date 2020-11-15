@@ -18,10 +18,10 @@ class MyDocument extends Document {
 
 MyDocument.getInitialProps = async (ctx) => {
   const sheet = new ServerStyleSheet();
-  const originalRenderPage = ctx.renderPage;
+  const origRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
-    originalRenderPage({
+    origRenderPage({
       enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
     });
   const initialProps = await Document.getInitialProps(ctx);
