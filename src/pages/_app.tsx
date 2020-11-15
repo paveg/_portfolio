@@ -3,9 +3,9 @@ import reset from 'styled-reset';
 import React from 'react';
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import Color from '../lib/color';
 import fetch from 'isomorphic-unfetch';
 import { SWRConfig } from 'swr';
+import Color from '../lib/color';
 
 type GlobalStyleProps = {
   theme: {
