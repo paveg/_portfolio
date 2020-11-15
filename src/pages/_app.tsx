@@ -4,6 +4,8 @@ import React from 'react';
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Color from '../lib/color';
+import fetch from 'isomorphic-unfetch';
+import { SWRConfig } from 'swr';
 
 type GlobalStyleProps = {
   theme: {
@@ -49,6 +51,8 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   }
 `;
 
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
 const App = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
     const jss = document.querySelector('#jss-server-side');
@@ -77,7 +81,9 @@ const App = ({ Component, pageProps }: AppProps) => {
 
       <ThemeProvider theme={{ backgroundColor: Color.white }}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <SWRConfig value={{ fetcher }}>
+          <Component {...pageProps} />
+        </SWRConfig>
       </ThemeProvider>
     </>
   );
