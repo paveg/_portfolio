@@ -14,6 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 function GitHub({ repos }: InferGetStaticPropsType<typeof getStaticProps>) {
+  if (!repos) return <>Repository not found</>;
   const notForkedRepos = repos.filter((repo) => repo.fork === false);
   return (
     <>
