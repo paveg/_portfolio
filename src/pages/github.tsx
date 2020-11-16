@@ -1,24 +1,34 @@
 import * as React from 'react';
-import fetch from 'node-fetch';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
-export const getStaticProps: GetStaticProps = async () => {
+type Repo = {
+  id: number;
+  name: string;
+  language?: string;
+  html_url: string;
+  fork: boolean;
+};
+
+type Props = {
+  repos: Repo[];
+};
+
+export async function getStaticProps() {
   const res = await fetch('https://api.github.com/users/paveg/repos?per_page=15&sort=pushed');
   const json = await res.json();
 
   return {
     props: {
-      repos: json.repos,
+      repo: json,
     },
   };
-};
+}
 
-function GitHub({ repos }: InferGetStaticPropsType<typeof getStaticProps>) {
+function GitHub({ repos }: Props) {
   if (!repos) return <>Repository not found</>;
   const notForkedRepos = repos.filter((repo) => repo.fork === false);
   return (
     <>
-      {notForkedRepos.map((repo: any) => (
+      {notForkedRepos.map((repo: Repo) => (
         <div key={`repo-${repo.id}`}>
           name: <a href={repo.html_url}>{repo.name}</a> | language: {repo.language}
           <br />
