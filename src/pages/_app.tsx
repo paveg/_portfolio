@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   // Write your global styles.
   html {
     height: 100%;
+    width: 100%
   }
   body {
     margin: 0;

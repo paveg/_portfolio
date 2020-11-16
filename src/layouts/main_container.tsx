@@ -8,6 +8,7 @@ const FlexContainer = styled.div`
   @media screen and (min-width: 768px) {
     height: 100%;
     display: flex;
+    width: 100%;
   }
 `;
 
@@ -26,6 +27,7 @@ const MainContent = styled.div`
   @media screen and (min-width: 768px) {
     flex: 1;
     order: 2;
+    width: 65vw;
   }
 `;
 
