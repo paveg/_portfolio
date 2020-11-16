@@ -40,7 +40,8 @@
       {
         "extensions": [".jsx", ".tsx"]
       }
-    ]
+    ],
+    "camelcase": "warn"
   },
   "settings": {
     "react": {
