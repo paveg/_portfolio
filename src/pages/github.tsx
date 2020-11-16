@@ -22,10 +22,11 @@ type Props = {
 
 // switch your props development or production.
 async function fetchApiData() {
+  const debugMode = Boolean(process.env.NEXT_PUBLIC_PORTFOLIO_DEBUG);
   let repos: Repo[];
   let languages: Language[];
 
-  if (process.env.debugMode) {
+  if (debugMode) {
     repos = [
       {
         id: 1,
@@ -41,9 +42,10 @@ async function fetchApiData() {
       { typescript: 100, javascript: 20, Go: 500 },
     ];
   } else {
-    const res = await fetch('https://api.github.com/users/paveg/repos?per_page=20&sort=pushed');
+    const res = await fetch('https://api.github.com/users/paveg/repos?per_page=30&sort=pushed');
     repos = await res.json();
 
+    if (!repos) repos = [];
     const notForkedRepos = repos.filter((repo) => repo.fork === false);
 
     languages = await Promise.all(
@@ -70,19 +72,15 @@ function GitHub({ repos, languages }: Props) {
   const sumLanguages: Language = {};
 
   languages.forEach((language) => {
-    for (const key in language) {
-      if (language.hasOwnProperty(key)) {
-        if (sumLanguages[key]) {
-          sumLanguages[key] += language[key];
-        } else {
-          sumLanguages[key] = language[key];
-        }
+    Object.keys(language).forEach((key) => {
+      if (sumLanguages[key]) {
+        sumLanguages[key] += language[key];
+      } else {
+        sumLanguages[key] = language[key];
       }
-    }
+    });
   });
 
-  console.log(languages);
-  console.log(sumLanguages);
   const data = {
     labels: Object.keys(sumLanguages),
     datasets: [
@@ -93,7 +91,6 @@ function GitHub({ repos, languages }: Props) {
       },
     ],
   };
-  if (!repos) return <>Repository not found</>;
   return (
     <>
       <HorizontalBar data={data} />
