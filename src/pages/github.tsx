@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      repo: json,
+      repos: json,
     },
   };
 }
