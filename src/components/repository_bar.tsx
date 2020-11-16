@@ -62,7 +62,7 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
     datasets: [
       {
         backgroundColor: GoogleColor.blue,
-        label: '直近関わったGitHubレポジトリの言語分布',
+        label: '直近関わったGitHubレポジトリの言語分布（byte）',
         data: Object.values(organized),
       },
     ],
