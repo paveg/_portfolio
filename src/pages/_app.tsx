@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   body {
     margin: 0;
     height: 100%;
+    width: 100%
     font-size: 1rem;
     font-family: 'Noto Sans JP', sans-serif;
     line-height: 1.5;
@@ -35,6 +36,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   }
   #__next {
     height: 100%;
+    width: 100%;
   }
   h1 {
     font-size: 2rem;

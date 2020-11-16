@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import { LanguagesByte, Repo, SampleLanguagesByte, SampleRepos } from '../interfaces/github';
-import RepositoryBar from '../components/repository_bar';
 
+const RepositoryBar = loadable(() => import('../components/repository_bar'));
 const MainContainer = loadable(() => import('../layouts/main_container'));
 const SideContent = loadable(() => import('../layouts/side_content'));
 
@@ -12,18 +12,14 @@ type Props = {
   languages: LanguagesByte[];
 };
 
-const Index: React.FC<Props> = ({ repos, languages }) => {
-  console.log(repos);
-
-  return (
-    <>
-      <MainContainer
-        side={<SideContent />}
-        main={<RepositoryBar languagesByteData={languages} />}
-      />
-    </>
-  );
-};
+const Index: React.FC<Props> = ({ repos, languages }) => (
+  <>
+    <MainContainer
+      side={<SideContent />}
+      main={<RepositoryBar repos={repos} languagesByteData={languages} />}
+    />
+  </>
+);
 
 export async function getStaticProps() {
   const debugMode = Boolean(process.env.NEXT_PUBLIC_PORTFOLIO_DEBUG);

@@ -5,16 +5,16 @@ import Color from '../lib/color';
 import Wrapper from '../components/wrapper';
 
 const FlexContainer = styled.div`
+  width: 100%;
   @media screen and (min-width: 768px) {
-    height: 100%;
     display: flex;
-    width: 100%;
+    height: 100%;
   }
 `;
 
 const SideContent = styled(Wrapper)`
+  width: 100%;
   @media screen and (min-width: 768px) {
-    height: 100%;
     width: 35vw;
     border-bottom: 1px solid;
     border-bottom-color: ${Color.white};
@@ -22,6 +22,7 @@ const SideContent = styled(Wrapper)`
 `;
 
 const MainContent = styled.div`
+  width: 100%
   padding: 20px;
   background-color: ${Color.white};
   @media screen and (min-width: 768px) {

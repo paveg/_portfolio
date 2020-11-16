@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PaddingWrapper = styled.div`
+  min-width: 200px;
   padding: 3em 2em 0em 2em;
 `;
 

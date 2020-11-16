@@ -9,6 +9,7 @@ type Props = {
 const WrapperDiv = styled.div`
   padding: 20px;
   text-align: center;
+  height: auto;
   color: ${Color.black};
   background-color: ${Color.gray};
 `;
