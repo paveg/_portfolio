@@ -23,8 +23,8 @@ export const SampleRepos = [
 ];
 
 export const SampleLanguagesByte = [
-  { typescript: 100, javascript: 20 },
-  { typescript: 100, javascript: 20, Go: 500 },
+  { typescript: 100 },
+  { typescript: 100, javascript: 0.1, Go: 500 },
   { ruby: 200 },
   { rust: 200, vlang: 500, shellscript: 200 },
 ];

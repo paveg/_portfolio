@@ -11,22 +11,26 @@ type Props = {
 };
 
 function organizeData(data: LanguagesByte[]): LanguagesByte {
-  const organized: LanguagesByte = {};
-
-  data.forEach((languageByte: LanguagesByte) => {
-    Object.keys(languageByte).forEach((key) => {
-      if (Object.prototype.hasOwnProperty.call(languageByte, key)) {
-        if (organized[key]) {
-          organized[key] += languageByte[key];
+  return data.reduce((acc, value) => {
+    Object.keys(value).forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(value, key)) {
+        if (acc[key]) {
+          acc[key] += value[key];
         } else {
-          organized[key] = languageByte[key];
+          acc[key] = value[key];
         }
       }
     });
-  });
-
-  return organized;
+    return acc;
+  }, {});
 }
+
+const Wrapper = styled.div`
+  padding: 20px;
+  height: 280px;
+  color: ${Color.black};
+  background-color: ${Color.white};
+`;
 
 const BarOption = {
   responsive: true,
@@ -48,22 +52,19 @@ const BarOption = {
     ],
   },
 };
-const Wrapper = styled.div`
-  padding: 20px;
-  height: 280px;
-  color: ${Color.black};
-  background-color: ${Color.white};
-`;
 
 const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
   const organized = organizeData(languagesByteData);
+  const dataLabels = Object.keys(organized);
+  const dataValues = Object.values(organized);
   const data = {
-    labels: Object.keys(organized),
+    labels: dataLabels,
     datasets: [
       {
+        minBarLength: 10,
         backgroundColor: GoogleColor.blue,
-        label: '直近関わったGitHubレポジトリの言語分布（byte）',
-        data: Object.values(organized),
+        label: '直近関わったforGitHubレポジトリの言語分布（byte）',
+        data: dataValues,
       },
     ],
   };
