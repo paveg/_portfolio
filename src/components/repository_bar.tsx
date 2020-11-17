@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { HorizontalBar } from 'react-chartjs-2';
+import { HorizontalBar, Radar } from 'react-chartjs-2';
 import styled from 'styled-components';
+import { Container } from '@material-ui/core';
 import { LanguagesByte, Repo } from '../interfaces/github';
 import Color, { GoogleColor } from '../lib/color';
 
@@ -26,10 +27,19 @@ function organizeData(data: LanguagesByte[]): LanguagesByte {
 }
 
 const Wrapper = styled.div`
-  padding: 20px;
-  height: 280px;
+  padding: 20px 0px;
+  width: 100%
   color: ${Color.black};
   background-color: ${Color.white};
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  width: 50%;
+  @media screen and (min-width: 768px) {
+    height: 300px;
+    width: 30vw;
+  }
 `;
 
 const BarOption = {
@@ -53,6 +63,26 @@ const BarOption = {
   },
 };
 
+const RadarOption = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scale: {
+    display: true,
+    ticks: {
+      min: 3,
+      max: 5,
+    },
+  },
+};
+
+const radarDataSets = {
+  要求分析: 4.0,
+  設計: 4.0,
+  コーディング: 4.3,
+  テスト: 4.6,
+  ドキュメンテーション: 4.5,
+};
+
 const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
   const organized = organizeData(languagesByteData);
   const dataLabels = Object.keys(organized);
@@ -63,25 +93,45 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
       {
         minBarLength: 10,
         backgroundColor: GoogleColor.blue,
-        label: '直近関わったforGitHubレポジトリの言語分布（byte）',
+        label: '最近関わったリポジトリの言語分布（byte）',
         data: dataValues,
       },
     ],
   };
 
   return (
-    <Wrapper>
-      <h3>Skills</h3>
-      <HorizontalBar data={data} options={BarOption} />
-      <h4>Repositories</h4>
-      {repos.slice(0, 5).map((repo: Repo) => (
-        <div key={repo.id}>
-          <a href={repo.html_url}>{repo.name}</a>
-          <br />
-          {repo.description}
-        </div>
-      ))}
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <h3>Skills</h3>
+        <FlexWrapper>
+          <HorizontalBar data={data} options={BarOption} />
+          <Radar
+            data={{
+              labels: Object.keys(radarDataSets),
+              datasets: [
+                {
+                  label: 'スキルマップ',
+                  backgroundColor: GoogleColor.yellow,
+                  data: Object.values(radarDataSets),
+                },
+              ],
+            }}
+            options={RadarOption}
+          />
+        </FlexWrapper>
+      </Wrapper>
+      <Wrapper>
+        <h4>Repositories</h4>
+        <br />
+        <ul>
+          {repos.slice(0, 5).map((repo: Repo) => (
+            <div key={repo.id}>
+              <a href={repo.html_url}>{repo.name}</a> | {repo.description}
+            </div>
+          ))}
+        </ul>
+      </Wrapper>
+    </Container>
   );
 };
 
