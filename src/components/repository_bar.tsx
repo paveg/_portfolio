@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import { HorizontalBar, Radar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import { Container } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import { LanguagesByte, Repo } from '../interfaces/github';
 import Color, { GoogleColor } from '../lib/color';
 
@@ -28,18 +29,8 @@ function organizeData(data: LanguagesByte[]): LanguagesByte {
 
 const Wrapper = styled.div`
   padding: 20px 0px;
-  width: 100%
   color: ${Color.black};
   background-color: ${Color.white};
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  width: 50%;
-  @media screen and (min-width: 768px) {
-    height: 300px;
-    width: 30vw;
-  }
 `;
 
 const BarOption = {
@@ -100,27 +91,29 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
   };
 
   return (
-    <Container>
-      <Wrapper>
-        <h3>Skills</h3>
-        <FlexWrapper>
-          <HorizontalBar data={data} options={BarOption} />
-          <Radar
-            data={{
-              labels: Object.keys(radarDataSets),
-              datasets: [
-                {
-                  label: 'スキルマップ',
-                  backgroundColor: GoogleColor.yellow,
-                  data: Object.values(radarDataSets),
-                },
-              ],
-            }}
-            options={RadarOption}
-          />
-        </FlexWrapper>
-      </Wrapper>
-      <Wrapper>
+    <Wrapper>
+      <Container>
+        <h3>My Skills</h3>
+        <Grid container justify="space-around" alignItems="baseline">
+          <Grid item spacing={1}>
+            <HorizontalBar data={data} options={BarOption} />
+          </Grid>
+          <Grid item spacing={1}>
+            <Radar
+              data={{
+                labels: Object.keys(radarDataSets),
+                datasets: [
+                  {
+                    label: 'スキルマップ',
+                    backgroundColor: GoogleColor.yellow,
+                    data: Object.values(radarDataSets),
+                  },
+                ],
+              }}
+              options={RadarOption}
+            />
+          </Grid>
+        </Grid>
         <h4>Repositories</h4>
         <br />
         <ul>
@@ -130,8 +123,8 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
             </div>
           ))}
         </ul>
-      </Wrapper>
-    </Container>
+      </Container>
+    </Wrapper>
   );
 };
 
