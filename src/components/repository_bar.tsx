@@ -116,13 +116,11 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
         </Grid>
         <h4>Repositories</h4>
         <br />
-        <ul>
-          {repos.slice(0, 5).map((repo: Repo) => (
-            <div key={repo.id}>
-              <a href={repo.html_url}>{repo.name}</a> | {repo.description}
-            </div>
-          ))}
-        </ul>
+        {repos.slice(0, 5).map((repo: Repo) => (
+          <div key={repo.id}>
+            <a href={repo.html_url}>{repo.name}</a> | {repo.description}
+          </div>
+        ))}
       </Container>
     </Wrapper>
   );
