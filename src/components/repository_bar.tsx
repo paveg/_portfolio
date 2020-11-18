@@ -189,7 +189,7 @@ const RepositoryBar: React.FC<Props> = ({ repos, languagesByteData }) => {
           <List component="nav" aria-label="github-repository">
             {repos.slice(0, 5).map((repo: Repo) => (
               <ListItem button component="a" key={repo.id} href={repo.html_url}>
-                <ListItemText primary={repo.name} />
+                <ListItemText primary={repo.name} secondary={repo.description} />
               </ListItem>
             ))}
           </List>
