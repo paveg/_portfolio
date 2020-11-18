@@ -8,7 +8,6 @@ const FlexContainer = styled.div`
   width: 100%;
   @media screen and (min-width: 768px) {
     display: flex;
-    height: 100%;
   }
 `;
 

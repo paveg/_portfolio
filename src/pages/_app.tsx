@@ -3,6 +3,8 @@ import reset from 'styled-reset';
 import React from 'react';
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { MuiThemeProvider } from '@material-ui/core';
 import Color from '../lib/color';
 
 type GlobalStyleProps = {
@@ -10,6 +12,12 @@ type GlobalStyleProps = {
     backgroundColor: string;
   };
 };
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['Noto Sans JP', 'sans-serif'].join(','),
+  },
+});
 
 const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   ${reset}
@@ -79,8 +87,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
 
       <ThemeProvider theme={{ backgroundColor: Color.white }}>
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <MuiThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </MuiThemeProvider>
       </ThemeProvider>
     </>
   );
