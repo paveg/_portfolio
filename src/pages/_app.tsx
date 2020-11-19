@@ -35,16 +35,15 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     line-height: 1.5;
     background: ${(props) => props.theme.backgroundColor};
   }
-  #next {
+  div#__next, div#__next > div {
+    height: 100%;
+  }
+  #next, #next > div {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-  }
-  #__next {
-    height: 100%;
-    width: 100%;
   }
   h1 {
     font-size: 2rem;
