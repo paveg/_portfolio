@@ -28,7 +28,7 @@ const PaddingWrapper = styled.div`
 `;
 
 const PaddingContainer = styled(Container)`
-  padding-top: 2em;
+  padding: 2em 0em;
 `;
 
 const StyledAvatar = styled(Avatar)`
