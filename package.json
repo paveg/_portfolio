@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "sitemap": "next-sitemap && git add public/robots.txt public/sitemap.xml && git commit -m ':memo: Update sitemap.xml and robots.txt'",
+    "postbuild": "next-sitemap",
     "build": "next build",
     "export": "next export",
     "start": "next start",
@@ -15,7 +15,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
-      "pre-push": "npm run lint && npm run sitemap"
+      "pre-push": "npm run lint"
     }
   },
   "dependencies": {
