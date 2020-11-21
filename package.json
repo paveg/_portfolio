@@ -4,19 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "postbuild": "next-sitemap",
+    "sitemap": "next-sitemap && git add public/robots.txt public/sitemap.xml && git commit -m ':memo: Update sitemap.xml and robots.txt'",
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "pre-commit": "npm run postbuild && pretty-quick && git add public/sitemap.xml public/robots.txt",
     "prettier": "pretty-quick --staged",
     "lint": "eslint src/** --ext .ts,.tsx",
     "lint:fix": "eslint src/** --ext .ts,.tsx --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pre-commit",
-      "pre-push": "npm run lint"
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm run lint && npm run sitemap"
     }
   },
   "dependencies": {
