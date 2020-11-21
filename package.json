@@ -32,6 +32,7 @@
     "react-dom": "17.0.1",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.0",
+    "xml-js": "^1.6.11",
     "xmljs": "^0.3.2"
   },
   "devDependencies": {

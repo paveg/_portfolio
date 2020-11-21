@@ -5,9 +5,7 @@ import * as xmljs from 'xml-js';
 const DEFAULT_LOCALE = 'ja-JP';
 const LOCALES = ['en-US', 'ja-JP'];
 
-const SitemapXml: React.FC = () => {
-  return null;
-};
+const SitemapXml: React.FC = () => null;
 
 export async function getServerSideProps({ res }: NextPageContext) {
   const siteUrl = process.env.SITE_URL;
@@ -47,8 +45,6 @@ export async function getServerSideProps({ res }: NextPageContext) {
   res!.setHeader('content-type', 'application/xml');
   res!.write(xml);
   res!.end();
-
-  return;
 }
 
 function escape(text: string): string {
