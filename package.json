@@ -31,7 +31,8 @@
     "react-chartjs-2": "^2.11.1",
     "react-dom": "17.0.1",
     "styled-components": "^5.2.1",
-    "styled-reset": "^4.3.0"
+    "styled-reset": "^4.3.0",
+    "xmljs": "^0.3.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.7",
@@ -39,6 +40,7 @@
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
+    "@types/xml-js": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "eslint": "^7.13.0",
