@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Color from '../lib/color';
 import Wrapper from '../components/wrapper';
@@ -42,10 +41,5 @@ const MainContainer: React.FC<Props> = ({ side, main }) => (
     <MainContent>{main}</MainContent>
   </FlexContainer>
 );
-
-MainContainer.propTypes = {
-  side: PropTypes.element.isRequired,
-  main: PropTypes.element.isRequired,
-};
 
 export default MainContainer;

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Host: https://work.pavlog.tokyo
-Sitemap: https://work.pavlog.tokyo/sitemap.xml

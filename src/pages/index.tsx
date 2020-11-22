@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import { LanguagesByte, Repo, SampleLanguagesByte, SampleRepos } from '../interfaces/github';
 
@@ -52,10 +51,5 @@ export async function getStaticProps() {
     },
   };
 }
-
-Index.propTypes = {
-  repos: PropTypes.arrayOf(PropTypes.any).isRequired,
-  languages: PropTypes.arrayOf(PropTypes.any).isRequired,
-};
 
 export default Index;
