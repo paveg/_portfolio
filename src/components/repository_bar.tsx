@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { HorizontalBar, Radar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
@@ -209,10 +208,5 @@ function shuffle<T>(array: T[]) {
   }
   return out;
 }
-
-RepositoryBar.propTypes = {
-  languagesByteData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  repos: PropTypes.arrayOf(PropTypes.any).isRequired,
-};
 
 export default RepositoryBar;
