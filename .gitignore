@@ -116,3 +116,6 @@ dist
 
 # export directory
 out/
+
+# asdf-vm
+.tool-versions
